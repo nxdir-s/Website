@@ -1,0 +1,18 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let matchDetail of matchDetails">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span>Champion Level: </span>{{matchDetail.champLevel}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+        <div><span>Win: </span>{{matchDetail.win}}</div>
+        <div><span>Kills: </span>{{matchDetail.kills}}</div>
+        <div><span>Deaths: </span>{{matchDetail.deaths}}</div>
+        <div><span>Assists: </span>{{matchDetail.assists}}</div>
+        <div><span>CreepsPerMin: </span>{{matchDetail.creepsPerMin}}</div>
+        <div><span>CsDiffPerMin: </span>{{matchDetail.csDiffPerMin}}</div>
+        <div><span>ExpDiffPerMin: </span>{{matchDetail.expDiffPerMin}}</div>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

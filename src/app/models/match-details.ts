@@ -1,4 +1,5 @@
 export class MatchDetails {
+    Champion: string;
     Kills: number;
     Deaths: number;
     Assists: number;
@@ -11,4 +12,9 @@ export class MatchDetails {
     MagicDamageDealt: number;
     TotalDamageDealtToChampions: number;
     ChampLevel: number;
+}
+
+export class MatchDetailFilter {
+    AccountId: string;
+    Queue: string;
 }

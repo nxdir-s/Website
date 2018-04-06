@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
-import { MatchDetails } from '../models/match-details';
+import { MatchDetails, MatchDetailFilter } from '../models/match-details';
 
 @Injectable()
 export class MatchDetailsService {
@@ -12,11 +12,20 @@ export class MatchDetailsService {
 
     private matchDetailsApiAddress = 'http://localhost:5000/'
 
-    getMatchDetails(): Observable<any[]> {
-        var address = this.matchDetailsApiAddress + "matchDetailsApi/matchDetails/byAccID/47440170";
-        return this.http.get<any>(address)
-            .map(this.extractMatchDetails);
+    getMatchDetails(filter: MatchDetailFilter): Observable<any[]> {
+        var address: string;
 
+        if (filter.Queue == "") {
+            address = this.matchDetailsApiAddress + "matchDetailsApi/matchDetails/all/" + filter.AccountId;
+            return this.http.get<any>(address)
+                .map(this.extractMatchDetails);
+
+        } else {
+            let body = JSON.stringify(filter);
+            address = this.matchDetailsApiAddress + "matchDetailsApi/matchDetails/byQueue";
+            return this.http.post<any>(address, body)
+                .map(this.extractMatchDetails);
+        }
     }
 
     private extractMatchDetails(res: HttpResponse<any>): MatchDetails[] {
@@ -27,4 +36,5 @@ export class MatchDetailsService {
         }
         return matchDetails;
     }
+
 }

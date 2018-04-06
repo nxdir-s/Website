@@ -1,7 +1,27 @@
-<section class="hero is-dark">
+<section class="hero is-medium is-dark is-bold">
     <div class="hero-body">
         <div class="container">
-            
+
+        </div>
+    </div>
+    <div class="hero-foot">
+        <div class="columns">
+          <div class="column is-2">
+
+          </div>
+          <div class="column is-9">
+              <div class="tabs is-boxed">
+                  <ul>
+                      <li [ngClass]="{'is-active': activeTabName == ''}" (click)="changeTab('')"><a>All</a></li>
+                      <li [ngClass]="{'is-active': activeTabName == 'RankedSolo'}" (click)="changeTab('RankedSolo')"><a>Ranked Solo</a></li>
+                      <li [ngClass]="{'is-active': activeTabName == 'RankedFlex'}" (click)="changeTab('RankedFlex')"><a>Ranked Flex</a></li>
+                      <li [ngClass]="{'is-active': activeTabName == 'NormalDraft'}" (click)="changeTab('NormalDraft')"><a>Normal Draft</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="column is-1">
+
+          </div>
         </div>
     </div>
 </section>
